@@ -5,9 +5,6 @@ var logger = require("morgan");
 var { initialize } = require("express-openapi");
 var swaggerUi = require("swagger-ui-express");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-
 var app = express();
 
 app.listen(3030);
@@ -15,10 +12,6 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
 
 // OpenAPI routes
 initialize({
@@ -36,6 +29,11 @@ app.use(
       url: "http://localhost:3030/api-docs",
     },
   })
+);
+
+console.log("App running on port http://localhost:3030");
+console.log(
+  "OpenAPI documentation available in http://localhost:3030/api-documentation"
 );
 
 module.exports = app;
