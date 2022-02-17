@@ -17,7 +17,7 @@ app.use(cookieParser());
 initialize({
   app,
   apiDoc: require("./api/api-doc"),
-  paths: "./api/paths",
+  paths: "./src/api/paths",
 });
 
 // OpenAPI UI
